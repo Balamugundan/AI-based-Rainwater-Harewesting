@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Assess your rooftop rainwater harvesting potential and artificial recharge feasibility with our professional evaluation tool." />
+  <meta name="keywords" content="rainwater harvesting, artificial recharge, water conservation, rooftop, groundwater" />
+  <meta name="author" content="RTRWH Assessment Platform" />
+  <title>RTRWH & AR Assessment | Rooftop Rainwater Harvesting Platform</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===========================
+       LOADING OVERLAY
+  ============================ -->
+  <div id="loading-overlay" aria-hidden="true">
+    <div class="loader-container">
+      <div class="water-drop">
+        <div class="drop-inner"></div>
+      </div>
+      <p class="loader-text">Initializing Assessment Platform...</p>
+    </div>
+  </div>
+
+  <!-- ===========================
+       TOAST NOTIFICATIONS
+  ============================ -->
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ===========================
+       BACK TO TOP BUTTON
+  ============================ -->
+  <button id="back-to-top" aria-label="Back to top" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- ===========================
+       NAVBAR
+  ============================ -->
+  <nav class="navbar navbar-expand-lg sticky-top" id="main-navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <!-- Brand -->
+      <a class="navbar-brand" href="#hero" aria-label="RTRWH Home">
+        <div class="brand-logo">
+          <i class="fas fa-tint brand-icon"></i>
+          <span class="brand-text">RTRWH<span class="brand-accent">AR</span></span>
+        </div>
+      </a>
+
+      <!-- Mobile toggle -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="toggler-icon"></span>
+        <span class="toggler-icon"></span>
+        <span class="toggler-icon"></span>
+      </button>
+
+      <!-- Nav Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#assessment">Assessment</a></li>
+          <li class="nav-item"><a class="nav-link" href="#results">Results</a></li>
+          <li class="nav-item"><a class="nav-link" href="#charts">Analytics</a></li>
+          <li class="nav-item"><a class="nav-link" href="#recommendations">Recommendations</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-lg-2">
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark/light mode" title="Toggle theme">
+              <i class="fas fa-moon" id="theme-icon"></i>
+            </button>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <a href="#assessment" class="btn btn-nav-cta">
+              <i class="fas fa-play me-1"></i> Start Assessment
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===========================
+       HERO SECTION
+  ============================ -->
+  <section id="hero" class="hero-section" aria-labelledby="hero-title">
+    <!-- Animated water waves -->
+    <div class="hero-waves" aria-hidden="true">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path class="wave wave-1" d="M0,160L48,149.3C96,139,192,117,288,122.7C384,128,480,160,576,165.3C672,171,768,149,864,128C960,107,1056,85,1152,90.7C1248,96,1344,128,1392,144L1440,160L1440,320L0,320Z"></path>
+        <path class="wave wave-2" d="M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,144C960,128,1056,128,1152,138.7C1248,149,1344,171,1392,181.3L1440,192L1440,320L0,320Z"></path>
+        <path class="wave wave-3" d="M0,224L48,213.3C96,203,192,181,288,186.7C384,192,480,224,576,218.7C672,213,768,171,864,165.3C960,160,1056,192,1152,197.3C1248,203,1344,181,1392,170.7L1440,160L1440,320L0,320Z"></path>
+      </svg>
+    </div>
+
+    <!-- Hero floating particles -->
+    <div class="hero-particles" aria-hidden="true">
+      <span class="particle p1"></span>
+      <span class="particle p2"></span>
+      <span class="particle p3"></span>
+      <span class="particle p4"></span>
+      <span class="particle p5"></span>
+      <span class="particle p6"></span>
+    </div>
+
+    <div class="container hero-content">
+      <div class="row align-items-center min-vh-80">
+        <!-- Text Content -->
+        <div class="col-lg-6 hero-text" data-animate="fade-left">
+          <div class="hero-badge">
+            <i class="fas fa-leaf me-2"></i>Sustainable Water Management
+          </div>
+          <h1 id="hero-title" class="hero-title">
+            Rooftop Rainwater Harvesting
+            <span class="hero-highlight">&amp; Artificial Recharge</span>
+            Assessment
+          </h1>
+          <p class="hero-description">
+            Scientifically evaluate your building's rainwater harvesting potential and groundwater
+            recharge feasibility. Make data-driven decisions for sustainable water management.
+          </p>
+          <div class="hero-stats" aria-label="Platform statistics">
+            <div class="hero-stat">
+              <span class="stat-number">10K+</span>
+              <span class="stat-label">Assessments</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+              <span class="stat-number">98%</span>
+              <span class="stat-label">Accuracy</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Parameters</span>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a href="#assessment" class="btn btn-hero-primary" id="hero-cta">
+              <i class="fas fa-play me-2"></i>Start Assessment
+            </a>
+            <a href="#about" class="btn btn-hero-secondary">
+              <i class="fas fa-info-circle me-2"></i>Learn More
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Illustration -->
+        <div class="col-lg-6 hero-illustration" data-animate="fade-right" aria-hidden="true">
+          <div class="illustration-wrapper">
+            <div class="building-card glass-card">
+              <div class="building-roof"></div>
+              <div class="building-body">
+                <div class="window"></div><div class="window"></div>
+                <div class="window"></div><div class="window"></div>
+              </div>
+              <div class="rain-drops">
+                <span class="raindrop r1"></span>
+                <span class="raindrop r2"></span>
+                <span class="raindrop r3"></span>
+                <span class="raindrop r4"></span>
+                <span class="raindrop r5"></span>
+              </div>
+              <div class="collection-tank">
+                <div class="water-level"></div>
+                <i class="fas fa-tint tank-icon"></i>
+              </div>
+            </div>
+            <div class="floating-badge badge-harvest">
+              <i class="fas fa-cloud-rain"></i>
+              <span>Harvesting Active</span>
+            </div>
+            <div class="floating-badge badge-recharge">
+              <i class="fas fa-layer-group"></i>
+              <span>Recharge: 85%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <span class="scroll-dot"></span>
+      <span class="scroll-text">Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ===========================
+       ABOUT SECTION
+  ============================ -->
+  <section id="about" class="section about-section" aria-labelledby="about-title">
+    <div class="container">
+      <div class="section-header text-center" data-animate="fade-up">
+        <span class="section-badge">
+          <i class="fas fa-book-open me-2"></i>Understanding the Basics
+        </span>
+        <h2 id="about-title" class="section-title">Why Rainwater Harvesting Matters</h2>
+        <p class="section-subtitle">
+          Understand the science and impact of rooftop rainwater harvesting and artificial groundwater recharge.
+        </p>
+      </div>
+
+      <div class="row g-4 mt-2">
+        <!-- Card 1 -->
+        <div class="col-lg-4 col-md-6" data-animate="fade-up" data-delay="100">
+          <div class="about-card glass-card h-100">
+            <div class="card-icon-wrap icon-blue">
+              <i class="fas fa-home card-icon"></i>
+            </div>
+            <h3 class="card-title">What is RTRWH?</h3>
+            <p class="card-text">
+              Rooftop Rainwater Harvesting (RTRWH) is a technique that collects and stores rainwater
+              falling on rooftops for reuse. It reduces dependence on municipal supply, lowers utility
+              bills, and replenishes local groundwater.
+            </p>
+            <ul class="card-list">
+              <li><i class="fas fa-check-circle"></i> Collects runoff from rooftops</li>
+              <li><i class="fas fa-check-circle"></i> Filtered and stored in tanks</li>
+              <li><i class="fas fa-check-circle"></i> Used for domestic & irrigation needs</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-lg-4 col-md-6" data-animate="fade-up" data-delay="200">
+          <div class="about-card glass-card h-100 card-featured">
+            <div class="card-icon-wrap icon-green">
+              <i class="fas fa-layer-group card-icon"></i>
+            </div>
+            <h3 class="card-title">Artificial Recharge (AR)</h3>
+            <p class="card-text">
+              Artificial Recharge directs harvested rainwater into the ground through specially designed
+              structures like recharge pits, trenches, and wells — replenishing depleting aquifers
+              and combating groundwater stress.
+            </p>
+            <ul class="card-list">
+              <li><i class="fas fa-check-circle"></i> Recharge pits & trenches</li>
+              <li><i class="fas fa-check-circle"></i> Percolation wells</li>
+              <li><i class="fas fa-check-circle"></i> Injection well methods</li>
+            </ul>
+            <div class="featured-badge">Most Important</div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-lg-4 col-md-6" data-animate="fade-up" data-delay="300">
+          <div class="about-card glass-card h-100">
+            <div class="card-icon-wrap icon-teal">
+              <i class="fas fa-globe-asia card-icon"></i>
+            </div>
+            <h3 class="card-title">Benefits of Conservation</h3>
+            <p class="card-text">
+              Implementing RTRWH and AR systems creates multi-dimensional benefits spanning environmental,
+              economic, and social dimensions — contributing to sustainable development goals.
+            </p>
+            <ul class="card-list">
+              <li><i class="fas fa-check-circle"></i> Reduces water bills by 40–60%</li>
+              <li><i class="fas fa-check-circle"></i> Raises groundwater levels</li>
+              <li><i class="fas fa-check-circle"></i> Mitigates urban flooding</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info strip -->
+      <div class="info-strip row g-3 mt-4" data-animate="fade-up">
+        <div class="col-6 col-lg-3">
+          <div class="info-chip">
+            <i class="fas fa-tint info-chip-icon"></i>
+            <div>
+              <strong>4,000 L</strong>
+              <span>avg. annual potential per 100m² roof</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="info-chip">
+            <i class="fas fa-arrow-trend-down info-chip-icon"></i>
+            <div>
+              <strong>30%</strong>
+              <span>groundwater level drop in last decade</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="info-chip">
+            <i class="fas fa-piggy-bank info-chip-icon"></i>
+            <div>
+              <strong>₹15,000</strong>
+              <span>avg. annual savings per household</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="info-chip">
+            <i class="fas fa-seedling info-chip-icon"></i>
+            <div>
+              <strong>60%</strong>
+              <span>reduction in storm water runoff</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       ASSESSMENT FORM SECTION
+  ============================ -->
+  <section id="assessment" class="section assessment-section" aria-labelledby="assessment-title">
+    <div class="container">
+      <div class="section-header text-center" data-animate="fade-up">
+        <span class="section-badge">
+          <i class="fas fa-clipboard-check me-2"></i>Step-by-Step Evaluation
+        </span>
+        <h2 id="assessment-title" class="section-title">Rainwater Harvesting Assessment</h2>
+        <p class="section-subtitle">
+          Complete the 4-step wizard to generate your personalized assessment report.
+        </p>
+      </div>
+
+      <div class="form-wizard-container glass-card" data-animate="fade-up">
+        <!-- Step progress bar -->
+        <div class="wizard-progress" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-label="Assessment progress">
+          <div class="progress-track">
+            <div class="progress-fill" id="wizard-progress-fill"></div>
+          </div>
+          <div class="step-indicators">
+            <div class="step-indicator active" data-step="1" id="step-ind-1">
+              <div class="step-bubble"><i class="fas fa-building"></i></div>
+              <span class="step-label">Building</span>
+            </div>
+            <div class="step-indicator" data-step="2" id="step-ind-2">
+              <div class="step-bubble"><i class="fas fa-home"></i></div>
+              <span class="step-label">Rooftop</span>
+            </div>
+            <div class="step-indicator" data-step="3" id="step-ind-3">
+              <div class="step-bubble"><i class="fas fa-cloud-rain"></i></div>
+              <span class="step-label">Rainfall</span>
+            </div>
+            <div class="step-indicator" data-step="4" id="step-ind-4">
+              <div class="step-bubble"><i class="fas fa-faucet"></i></div>
+              <span class="step-label">Water Use</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form id="assessment-form" novalidate aria-label="Assessment form">
+
+          <!-- Step 1: Building Information -->
+          <div class="form-step active" id="form-step-1" role="tabpanel" aria-labelledby="step-ind-1">
+            <div class="step-header">
+              <div class="step-icon-wrap">
+                <i class="fas fa-building"></i>
+              </div>
+              <div>
+                <h3 class="step-title">Building Information</h3>
+                <p class="step-desc">Provide details about the property owner and location.</p>
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="owner-name" class="form-label">Owner Name <span class="required">*</span></label>
+                <div class="input-group-custom">
+                  <i class="fas fa-user input-icon"></i>
+                  <input type="text" class="form-control custom-input" id="owner-name"
+                    name="ownerName" placeholder="Enter full name" required
+                    autocomplete="name" />
+                </div>
+                <div class="invalid-feedback" id="owner-name-error"></div>
+              </div>
+              <div class="col-md-6">
+                <label for="building-type" class="form-label">Building Type <span class="required">*</span></label>
+                <div class="input-group-custom">
+                  <i class="fas fa-city input-icon"></i>
+                  <select class="form-control custom-input custom-select" id="building-type" name="buildingType" required>
+                    <option value="">Select building type</option>
+                    <option value="residential">Residential</option>
+                    <option value="commercial">Commercial</option>
+                    <option value="industrial">Industrial</option>
+                    <option value="institutional">Institutional</option>
+                    <option value="mixed">Mixed Use</option>
+                  </select>
+                </div>
+                <div class="invalid-feedback" id="building-type-error"></div>
+              </div>
+              <div class="col-md-12">
+                <label for="location" class="form-label">Location / Address <span class="required">*</span></label>
+                <div class="input-group-custom">
+                  <i class="fas fa-map-marker-alt input-icon"></i>
+                  <input type="text" class="form-control custom-input" id="location"
+                    name="location" placeholder="City, State, Country" required autocomplete="address-level2" />
+                </div>
+                <div class="invalid-feedback" id="location-error"></div>
+              </div>
+              <div class="col-md-6">
+                <label for="latitude" class="form-label">Latitude</label>
+                <div class="input-group-custom">
+                  <i class="fas fa-crosshairs input-icon"></i>
+                  <input type="number" class="form-control custom-input" id="latitude"
+                    name="latitude" placeholder="e.g. 13.0827" step="0.0001"
+                    min="-90" max="90" />
+                </div>
+                <div class="invalid-feedback" id="latitude-error"></div>
+              </div>
+              <div class="col-md-6">
+                <label for="longitude" class="form-label">Longitude</label>
+                <div class="input-group-custom">
+                  <i class="fas fa-crosshairs input-icon"></i>
+                  <input type="number" class="form-control custom-input" id="longitude"
+                    name="longitude" placeholder="e.g. 80.2707" step="0.0001"
+                    min="-180" max="180" />
+                </div>
+                <div class="invalid-feedback" id="longitude-error"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Rooftop Details (Enhanced) -->
+          <div class="form-step" id="form-step-2" role="tabpanel" aria-labelledby="step-ind-2">
+            <div class="step-header">
+              <div class="step-icon-wrap">
+                <i class="fas fa-home"></i>
+              </div>
+              <div>
+                <h3 class="step-title">Rooftop Details</h3>
+                <p class="step-desc">Describe the physical characteristics of your rooftop for accurate harvest estimation.</p>
+              </div>
+            </div>
+
+            <!-- SVG Roof Illustration -->
+            <div class="roof-illustration-wrap" aria-hidden="true">
+              <div class="roof-illustration-inner">
+                <!-- Cloud & Rain -->
+                <div class="ri-cloud">
+                  <svg viewBox="0 0 90 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="45" cy="28" rx="42" ry="18" fill="url(#cloudGrad)"/>
+                    <ellipse cx="28" cy="32" rx="24" ry="14" fill="url(#cloudGrad2)"/>
+                    <ellipse cx="62" cy="30" rx="22" ry="13" fill="url(#cloudGrad3)"/>
+                    <defs>
+                      <radialGradient id="cloudGrad" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#b0d4f1"/>
+                        <stop offset="100%" stop-color="#6baed6"/>
+                      </radialGradient>
+                      <radialGradient id="cloudGrad2" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#c6e2f5"/>
+                        <stop offset="100%" stop-color="#7fbfe4"/>
+                      </radialGradient>
+                      <radialGradient id="cloudGrad3" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#b8daf3"/>
+                        <stop offset="100%" stop-color="#74b5e0"/>
+                      </radialGradient>
+                    </defs>
+                  </svg>
+                  <!-- Animated rain drops -->
+                  <div class="ri-raindrops">
+                    <span class="ri-drop rd1"></span><span class="ri-drop rd2"></span>
+                    <span class="ri-drop rd3"></span><span class="ri-drop rd4"></span>
+                    <span class="ri-drop rd5"></span><span class="ri-drop rd6"></span>
+                    <span class="ri-drop rd7"></span>
+                  </div>
+                </div>
+
+                <!-- Flow path labels -->
+                <div class="ri-labels">
+                  <span class="ri-label ri-lbl-rain"><i class="fas fa-cloud-rain"></i> Rain</span>
+                  <span class="ri-arrow ri-arr-1">→</span>
+                  <span class="ri-label ri-lbl-roof"><i class="fas fa-home"></i> Roof</span>
+                  <span class="ri-arrow ri-arr-2">→</span>
+                  <span class="ri-label ri-lbl-gutter"><i class="fas fa-minus"></i> Gutter</span>
+                  <span class="ri-arrow ri-arr-3">→</span>
+                  <span class="ri-label ri-lbl-pipe"><i class="fas fa-pipe"></i> Downpipe</span>
+                  <span class="ri-arrow ri-arr-4">→</span>
+                  <span class="ri-label ri-lbl-tank"><i class="fas fa-database"></i> Storage Tank</span>
+                </div>
+
+                <!-- SVG Building Scene -->
+                <svg class="ri-svg" viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Roof water flow diagram">
+                  <!-- Building body -->
+                  <rect x="100" y="100" width="200" height="75" rx="4" fill="url(#buildGrad)" stroke="#0077b6" stroke-width="1.5"/>
+                  <!-- Windows -->
+                  <rect x="120" y="115" width="30" height="25" rx="3" fill="rgba(0,180,216,0.35)" stroke="#00b4d8" stroke-width="1"/>
+                  <rect x="165" y="115" width="30" height="25" rx="3" fill="rgba(0,180,216,0.35)" stroke="#00b4d8" stroke-width="1"/>
+                  <rect x="210" y="115" width="30" height="25" rx="3" fill="rgba(0,180,216,0.35)" stroke="#00b4d8" stroke-width="1"/>
+                  <rect x="155" y="148" width="40" height="27" rx="2" fill="#0077b6" opacity="0.4"/>
+                  <!-- Roof (Gable shape) -->
+                  <polygon points="90,100 200,50 310,100" fill="url(#roofGrad)" stroke="#005f90" stroke-width="1.5"/>
+                  <!-- Gutter (left & right side) -->
+                  <rect x="90" y="97" width="220" height="7" rx="3.5" fill="#00b4d8" opacity="0.9"/>
+                  <!-- Left downpipe -->
+                  <rect x="90" y="104" width="8" height="71" rx="3" fill="url(#pipeGrad)"/>
+                  <!-- Right downpipe -->
+                  <rect x="302" y="104" width="8" height="71" rx="3" fill="url(#pipeGrad)"/>
+                  <!-- Animated water in left pipe -->
+                  <rect class="ri-water-flow" x="91" y="104" width="6" height="71" rx="3" fill="rgba(0,180,216,0.6)"/>
+                  <!-- Storage tank (left) -->
+                  <rect x="50" y="140" width="45" height="35" rx="5" fill="url(#tankGrad)" stroke="#0077b6" stroke-width="1.5"/>
+                  <ellipse cx="72" cy="140" rx="22" ry="5" fill="#00b4d8" opacity="0.8"/>
+                  <!-- Water level in tank (animated) -->
+                  <rect class="ri-tank-water" x="52" y="155" width="41" height="18" rx="3" fill="rgba(0,180,216,0.55)"/>
+                  <!-- Storage tank (right) -->
+                  <rect x="385" y="140" width="45" height="35" rx="5" fill="url(#tankGrad)" stroke="#0077b6" stroke-width="1.5"/>
+                  <ellipse cx="407" cy="140" rx="22" ry="5" fill="#00b4d8" opacity="0.8"/>
+                  <rect class="ri-tank-water" x="387" y="155" width="41" height="18" rx="3" fill="rgba(0,180,216,0.55)"/>
+                  <!-- Pipe to right tank -->
+                  <rect x="302" y="104" width="8" height="71" rx="3" fill="url(#pipeGrad)"/>
+                  <!-- Rain drops hitting roof -->
+                  <g class="ri-rain-hits" opacity="0.7">
+                    <line x1="140" y1="60" x2="143" y2="72" stroke="#00b4d8" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="175" y1="52" x2="178" y2="64" stroke="#00b4d8" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="215" y1="53" x2="218" y2="65" stroke="#00b4d8" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="255" y1="62" x2="258" y2="74" stroke="#00b4d8" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="160" y1="57" x2="163" y2="69" stroke="#48cae4" stroke-width="1" stroke-linecap="round"/>
+                    <line x1="240" y1="55" x2="243" y2="67" stroke="#48cae4" stroke-width="1" stroke-linecap="round"/>
+                  </g>
+                  <!-- Labels on diagram -->
+                  <text x="200" y="78" text-anchor="middle" font-size="9" fill="#0077b6" font-family="Inter,sans-serif" font-weight="600">ROOF</text>
+                  <text x="200" y="99" text-anchor="middle" font-size="8" fill="#00b4d8" font-family="Inter,sans-serif">GUTTER</text>
+                  <text x="72" y="138" text-anchor="middle" font-size="7.5" fill="#005f90" font-family="Inter,sans-serif" font-weight="600">TANK</text>
+                  <text x="407" y="138" text-anchor="middle" font-size="7.5" fill="#005f90" font-family="Inter,sans-serif" font-weight="600">TANK</text>
+                  <defs>
+                    <linearGradient id="buildGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#e8f4fd"/>
+                      <stop offset="100%" stop-color="#cce5f6"/>
+                    </linearGradient>
+                    <linearGradient id="roofGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#0096c7"/>
+                      <stop offset="100%" stop-color="#0077b6"/>
+                    </linearGradient>
+                    <linearGradient id="pipeGrad" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stop-color="#0096c7"/>
+                      <stop offset="100%" stop-color="#00b4d8"/>
+                    </linearGradient>
+                    <linearGradient id="tankGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#e0f4fb"/>
+                      <stop offset="100%" stop-color="#ade8f4"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+
+            <div class="row g-3 mt-1">
+              <!-- Roof Dimensions Section -->
+              <div class="col-12">
+                <div class="step2-section-label"><i class="fas fa-ruler me-2"></i>Roof Dimensions</div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="roof-length" class="form-label tooltip-label">
+                  Roof Length (m) <span class="required">*</span>
+                  <span class="field-tooltip" data-tippy-content="Enter the length of your rooftop in metres.">&#9432;</span>
+                </label>
+                <div class="input-group-custom">
+                  <i class="fas fa-arrows-alt-h input-icon"></i>
+                  <input type="number" class="form-control custom-input" id="roof-length"
+                    name="roofLength" placeholder="e.g. 15" min="1" max="1000" step="0.1" required />
+                </div>
+                <div class="invalid-feedback" id="roof-length-error"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="roof-width" class="form-label tooltip-label">
+                  Roof Width (m) <span class="required">*</span>
+                  <span class="field-tooltip" data-tippy-content="Enter the width of your rooftop in metres.">&#9432;</span>
+                </label>
+                <div class="input-group-custom">
+                  <i class="fas fa-arrows-alt-v input-icon"></i>
+                  <input type="number" class="form-control custom-input" id="roof-width"
+                    name="roofWidth" placeholder="e.g. 10" min="1" max="1000" step="0.1" required />
+                </div>
+                <div class="invalid-feedback" id="roof-width-error"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="rooftop-area" class="form-label tooltip-label">
+                  Rooftop Area (m²)
+                  <span class="field-tooltip" data-tippy-content="Auto-calculated as Length × Width. You can also edit directly.">&#9432;</span>
+                  <span class="auto-calc-badge">Auto</span>
+                </label>
+                <div class="input-group-custom">
+                  <i class="fas fa-ruler-combined input-icon"></i>
+                  <input type="number" class="form-control custom-input" id="rooftop-area"
+                    name="rooftopArea" placeholder="Length × Width" min="1" max="100000" step="0.01" required />
+                </div>
+                <div class="invalid-feedback" id="rooftop-area-error"></div>
+              </div>
+
+              <!-- Roof Material & Runoff Coefficient -->
+              <div class="col-12 mt-1">
+                <div class="step2-section-label"><i class="fas fa-layer-group me-2"></i>Roof Material & Properties</div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="roof-material" class="form-label tooltip-label">
+                  Roof Material <span class="required">*</span>
+                  <span class="field-tooltip" data-tippy-content="The material of your roof surface affects how much water runs off during rain.">&#9432;</span>
+                </label>
+                <div class="input-group-custom">
+                  <i class="fas fa-layer-group input-icon"></i>
+                  <select class="form-control custom-input custom-select" id="roof-material" name="roofMaterial" required>
+                    <option value="">Select material</option>
+                    <option value="rcc" data-coeff="0.85">RCC / Concrete</option>
+                    <option value="tile" data-coeff="0.80">Clay / Ceramic Tile</option>
+                    <option value="metal" data-coeff="0.90">Metal / GI Sheet</option>
+                    <option value="asphalt" data-coeff="0.85">Asphalt Shingles</option>
+                    <option value="grass" data-coeff="0.30">Green / Grass Roof</option>
+                  </select>
+                </div>
+                <div class="invalid-feedback" id="roof-material-error"></div>
+              </div>
+
+              <!-- Runoff Coefficient Display -->
+              <div class="col-md-6 d-flex align-items-end">
+                <div class="coeff-display-card" id="runoff-coeff-card" aria-live="polite">
+                  <div class="coeff-icon"><i class="fas fa-water"></i></div>
+                  <div class="coeff-info">
+                    <span class="coeff-label">Runoff Coefficient (C)</span>
+                    <span class="coeff-value" id="runoff-coeff-value">—</span>
+                    <span class="coeff-note" id="runoff-coeff-note">Select a roof material</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Roof Shape -->
+              <div class="col-md-6">
+                <label for="roof-shape" class="form-label tooltip-label">
+                  Roof Shape <span class="required">*</span>
+                  <span class="field-tooltip" data-tippy-content="The geometry of your roof affects drainage direction and efficiency.">&#9432;</span>
+                </label>
+                <div class="input-group-custom">
+                  <i class="fas fa-drafting-compass input-icon"></i>
+                  <select class="form-control custom-input custom-select" id="roof-shape" name="roofShape" required>
+                    <option value="">Select shape</option>
+                    <option value="flat">Flat</option>
+                    <option value="gable">Gable (Pitched – 2 sides)</option>
+                    <option value="hip">Hip (Pitched – 4 sides)</option>
+                    <option value="shed">Shed (Single slope)</option>
+                  </select>
+                </div>
+                <div class="invalid-feedback" id="roof-shape-error"></div>
+              </div>
+
+              <!-- Roof Condition with Efficiency Display -->
+              <div class="col-md-6">
+                <label for="roof-condition" class="form-label tooltip-label">
+                  Roof Condition <span class="required">*</span>
+                  <span class="field-tooltip" data-tippy-content="The physical condition of your roof determines collection efficiency factor.">&#9432;</span>
+                </label>
+                <div class="input-group-custom">
+                  <i class="fas fa-star-half-alt input-icon"></i>
+                  <select class="form-control custom-input custom-select" id="roof-condition" name="roofCondition" required>
+                    <option value="">Select condition</option>
+                    <option value="excellent" data-factor="1.0">Excellent</option>
+                    <option value="good" data-factor="0.9">Good</option>
+                    <option value="fair" data-factor="0.75">Fair</option>
+                    <option value="poor" data-factor="0.55">Poor</option>
+                  </select>
+                </div>
+                <div class="invalid-feedback" id="roof-condition-error"></div>
+              </div>
+
+              <!-- Condition Efficiency Badge -->
+              <div class="col-12" id="condition-efficiency-wrap" style="display:none;">
+                <div class="efficiency-banner" id="condition-efficiency-banner">
+                  <i class="fas fa-gauge-high me-2"></i>
+                  <span>Collection Efficiency Factor: </span>
+                  <strong id="condition-efficiency-value">—</strong>
+                  <span id="condition-efficiency-desc" class="ms-2"></span>
+                </div>
+              </div>
+
+              <!-- Slope Slider -->
+              <div class="col-12 mt-1">
+                <div class="step2-section-label"><i class="fas fa-angle-up me-2"></i>Roof Slope & Drainage</div>
+              </div>
+
+              <div class="col-md-12">
+                <label for="roof-slope-angle" class="form-label tooltip-label">
+                  Roof Slope Angle <span class="required">*</span>
+                  <span class="field-tooltip" data-tippy-content="Steeper roofs drain faster, affecting collection efficiency.">&#9432;</span>
+                  <span class="slope-display-inline" id="slope-display-inline">0°</span>
+                </label>
+                <div class="slope-slider-wrap">
+                  <span class="slope-end-label">0° Flat</span>
+                  <div class="slope-slider-inner">
+                    <input type="range" class="slope-slider" id="roof-slope-angle"
+                      name="roofSlopeAngle" min="0" max="45" step="1" value="0" />
+                    <div class="slope-track-fill" id="slope-track-fill"></div>
+                  </div>
+                  <span class="slope-end-label">45° Steep</span>
+                </div>
+                <div class="slope-markers">
+                  <span>Flat</span><span>Low (5-15°)</span><span>Moderate (15-30°)</span><span>Steep (30-45°)</span>
+                </div>
+              </div>
+
+              <!-- Gutter System & Downpipes -->
+              <div class="col-12 mt-1">
+                <div class="step2-section-label"><i class="fas fa-grip-lines-vertical me-2"></i>Gutter & Drainage System</div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label tooltip-label">
+                  Existing Gutter System
+                  <span class="field-tooltip" data-tippy-content="A gutter system significantly improves water collection from your roof.">&#9432;</span>
+                </label>
+                <div class="toggle-btn-group" role="radiogroup" aria-label="Existing gutter system">
+                  <input type="radio" class="toggle-radio" name="hasGutter" id="gutter-yes" value="yes" />
+                  <label for="gutter-yes" class="toggle-btn-label">
+                    <i class="fas fa-check-circle me-1"></i>Yes
+                  </label>
+                  <input type="radio" class="toggle-radio" name="hasGutter" id="gutter-no" value="no" checked />
+                  <label for="gutter-no" class="toggle-btn-label">
+                    <i class="fas fa-times-circle me-1"></i>No
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="num-downpipes" class="form-label tooltip-label">
+                  Number of Downpipes
+                  <span class="field-tooltip" data-tippy-content="Downpipes channel water from gutters to the storage tank. More pipes = better drainage.">&#9432;</span>
+                </label>
+                <div class="input-group-custom">
+                  <i class="fas fa-grip-lines-vertical input-icon"></i>
+                  <input type="number" class="form-control custom-input" id="num-downpipes"
+                    name="numDownpipes" placeholder="e.g. 2" min="0" max="50" value="0" />
+                </div>
+              </div>
+
+            </div><!-- end row -->
+
+            <!-- Live Assessment Summary Card -->
+            <div class="step2-live-summary" id="step2-live-summary" aria-live="polite">
+              <div class="step2-summary-header">
+                <i class="fas fa-chart-bar me-2"></i>
+                <span>Live Rooftop Assessment Summary</span>
+                <span class="step2-summary-badge">Auto-updating</span>
+              </div>
+              <div class="step2-summary-grid">
+                <div class="step2-summary-item">
+                  <div class="step2-summary-icon" style="background: linear-gradient(135deg,#0077b6,#00b4d8)">
+                    <i class="fas fa-ruler-combined"></i>
+                  </div>
+                  <div class="step2-summary-data">
+                    <span class="step2-summary-label">Roof Area</span>
+                    <span class="step2-summary-value" id="ls-area">—</span>
+                  </div>
+                </div>
+                <div class="step2-summary-item">
+                  <div class="step2-summary-icon" style="background: linear-gradient(135deg,#2dc653,#1a9941)">
+                    <i class="fas fa-water"></i>
+                  </div>
+                  <div class="step2-summary-data">
+                    <span class="step2-summary-label">Runoff Coefficient</span>
+                    <span class="step2-summary-value" id="ls-coeff">—</span>
+                  </div>
+                </div>
+                <div class="step2-summary-item">
+                  <div class="step2-summary-icon" style="background: linear-gradient(135deg,#7b2d8b,#a855c5)">
+                    <i class="fas fa-gauge-high"></i>
+                  </div>
+                  <div class="step2-summary-data">
+                    <span class="step2-summary-label">Collection Efficiency</span>
+                    <span class="step2-summary-value" id="ls-efficiency">—</span>
+                  </div>
+                </div>
+                <div class="step2-summary-item">
+                  <div class="step2-summary-icon" style="background: linear-gradient(135deg,#f77f00,#f4a261)">
+                    <i class="fas fa-cloud-rain"></i>
+                  </div>
+                  <div class="step2-summary-data">
+                    <span class="step2-summary-label">Est. Annual Harvest</span>
+                    <span class="step2-summary-value" id="ls-harvest">—</span>
+                  </div>
+                </div>
+              </div>
+              <div class="step2-summary-formula">
+                <i class="fas fa-info-circle me-1"></i>
+                Formula: <strong>V = R × A × C × η</strong> &nbsp;|&nbsp;
+                Using sample rainfall of <strong id="ls-sample-rainfall">800 mm/yr</strong>
+                &nbsp;|&nbsp; System efficiency η = 0.85
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Step 3: Rainfall & Soil -->
+          <div class="form-step" id="form-step-3" role="tabpanel" aria-labelledby="step-ind-3">
+            <div class="step-header">
+              <div class="step-icon-wrap">
+                <i class="fas fa-cloud-rain"></i>
+              </div>
+              <div>
+                <h3 class="step-title">Rainfall &amp; Soil Data</h3>
+                <p class="step-desc">Enter climatic and soil parameters for accurate recharge estimation.</p>
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="annual-rainfall" class="form-label">Annual Rainfall (mm) <span class="required">*</span></label>
+                <div class="input-group-custom">
+                  <i class="fas fa-cloud-showers-heavy input-icon"></i>
+                  <input type="number" class="form-control custom-input" id="annual-rainfall"
+                    name="annualRainfall" placeholder="e.g. 800" min="100" max="5000" required />
+                </div>
+                <div class="invalid-feedback" id="annual-rainfall-error"></div>
+              </div>
+              <div class="col-md-6">
+                <label for="soil-type" class="form-label">Soil Type <span class="required">*</span></label>
+                <div class="input-group-custom">
+                  <i class="fas fa-mountain input-icon"></i>
+                  <select class="form-control custom-input custom-select" id="soil-type" name="soilType" required>
+                    <option value="">Select soil type</option>
+                    <option value="sandy" data-rate="0.25">Sandy (High permeability)</option>
+                    <option value="loamy" data-rate="0.15">Loamy (Medium permeability)</option>
+                    <option value="clayey" data-rate="0.05">Clayey (Low permeability)</option>
+                    <option value="gravelly" data-rate="0.35">Gravelly (Very high)</option>
+                    <option value="black" data-rate="0.08">Black Cotton Soil</option>
+                  </select>
+                </div>
+                <div class="invalid-feedback" id="soil-type-error"></div>
+              </div>
+              <div class="col-md-6">
+                <label for="groundwater-level" class="form-label">Groundwater Level (m below ground) <span class="required">*</span></label>
+                <div class="input-group-custom">
+                  <i class="fas fa-water input-icon"></i>
+                  <input type="number" class="form-control custom-input" id="groundwater-level"
+                    name="groundwaterLevel" placeholder="e.g. 15" min="1" max="500" required />
+                </div>
+                <div class="invalid-feedback" id="groundwater-level-error"></div>
+              </div>
+              <div class="col-md-6">
+                <label for="recharge-feasibility" class="form-label">Recharge Feasibility <span class="required">*</span></label>
+                <div class="input-group-custom">
+                  <i class="fas fa-check-double input-icon"></i>
+                  <select class="form-control custom-input custom-select" id="recharge-feasibility" name="rechargeFeasibility" required>
+                    <option value="">Select feasibility</option>
+                    <option value="high">High</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="low">Low</option>
+                    <option value="not-feasible">Not Feasible</option>
+                  </select>
+                </div>
+                <div class="invalid-feedback" id="recharge-feasibility-error"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Water Usage -->
+          <div class="form-step" id="form-step-4" role="tabpanel" aria-labelledby="step-ind-4">
+            <div class="step-header">
+              <div class="step-icon-wrap">
+                <i class="fas fa-faucet"></i>
+              </div>
+              <div>
+                <h3 class="step-title">Water Usage Information</h3>
+                <p class="step-desc">Tell us about your current water consumption patterns.</p>
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="num-occupants" class="form-label">Number of Occupants <span class="required">*</span></label>
+                <div class="input-group-custom">
+                  <i class="fas fa-users input-icon"></i>
+                  <input type="number" class="form-control custom-input" id="num-occupants"
+                    name="numOccupants" placeholder="e.g. 5" min="1" max="10000" required />
+                </div>
+                <div class="invalid-feedback" id="num-occupants-error"></div>
+              </div>
+              <div class="col-md-6">
+                <label for="daily-consumption" class="form-label">Daily Water Consumption (L/day) <span class="required">*</span></label>
+                <div class="input-group-custom">
+                  <i class="fas fa-tachometer-alt input-icon"></i>
+                  <input type="number" class="form-control custom-input" id="daily-consumption"
+                    name="dailyConsumption" placeholder="e.g. 200" min="10" max="100000" required />
+                </div>
+                <div class="invalid-feedback" id="daily-consumption-error"></div>
+              </div>
+              <div class="col-md-6">
+                <label for="water-source" class="form-label">Existing Water Source <span class="required">*</span></label>
+                <div class="input-group-custom">
+                  <i class="fas fa-pipe input-icon"></i>
+                  <select class="form-control custom-input custom-select" id="water-source" name="waterSource" required>
+                    <option value="">Select source</option>
+                    <option value="municipal">Municipal Supply</option>
+                    <option value="borewell">Borewell / Tube Well</option>
+                    <option value="open-well">Open Well</option>
+                    <option value="tanker">Water Tanker</option>
+                    <option value="river">River / Canal</option>
+                    <option value="mixed">Mixed Sources</option>
+                  </select>
+                </div>
+                <div class="invalid-feedback" id="water-source-error"></div>
+              </div>
+              <div class="col-md-6">
+                <label for="existing-rwh" class="form-label">Existing RWH System</label>
+                <div class="input-group-custom">
+                  <i class="fas fa-tools input-icon"></i>
+                  <select class="form-control custom-input custom-select" id="existing-rwh" name="existingRwh">
+                    <option value="none">None</option>
+                    <option value="partial">Partial System</option>
+                    <option value="full">Full System</option>
+                    <option value="recharge-only">Recharge Only</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Summary panel before submit -->
+            <div class="form-summary-panel mt-4" id="form-summary">
+              <h4 class="summary-title"><i class="fas fa-clipboard-list me-2"></i>Summary Preview</h4>
+              <div class="row g-2" id="summary-content">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Wizard Navigation -->
+          <div class="wizard-nav">
+            <button type="button" class="btn btn-wizard-prev" id="prev-btn" disabled aria-label="Previous step">
+              <i class="fas fa-chevron-left me-2"></i>Previous
+            </button>
+            <div class="step-counter" id="step-counter" aria-live="polite">Step 1 of 4</div>
+            <button type="button" class="btn btn-wizard-next" id="next-btn" aria-label="Next step">
+              Next<i class="fas fa-chevron-right ms-2"></i>
+            </button>
+            <button type="submit" class="btn btn-wizard-submit d-none" id="submit-btn" aria-label="Calculate assessment">
+              <i class="fas fa-calculator me-2"></i>Calculate Assessment
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       RESULTS SECTION
+  ============================ -->
+  <section id="results" class="section results-section d-none" aria-labelledby="results-title">
+    <div class="container">
+      <div class="section-header text-center" data-animate="fade-up">
+        <span class="section-badge success-badge">
+          <i class="fas fa-check-circle me-2"></i>Assessment Complete
+        </span>
+        <h2 id="results-title" class="section-title">Your Assessment Results</h2>
+        <p class="section-subtitle">
+          Based on your inputs, here are the calculated potential values for your property.
+        </p>
+      </div>
+
+      <!-- Suitability Score -->
+      <div class="score-showcase" data-animate="fade-up">
+        <div class="score-card glass-card">
+          <div class="circular-progress-wrap">
+            <svg class="circular-progress" viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="cp-track" cx="60" cy="60" r="52"></circle>
+              <circle class="cp-fill" cx="60" cy="60" r="52" id="cp-fill-circle"></circle>
+            </svg>
+            <div class="cp-content">
+              <span class="cp-value" id="suitability-score">0</span>
+              <span class="cp-unit">%</span>
+              <span class="cp-label">Suitability</span>
+            </div>
+          </div>
+          <div class="score-info">
+            <h3 class="score-title">Overall Suitability Score</h3>
+            <p class="score-desc" id="score-description">Calculating your property's suitability for rainwater harvesting and artificial recharge...</p>
+            <div class="score-badge-wrap">
+              <span class="score-rating-badge" id="score-rating-badge">—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result Cards -->
+      <div class="row g-4 mt-2">
+        <div class="col-lg-4 col-md-6" data-animate="fade-up" data-delay="100">
+          <div class="result-card glass-card">
+            <div class="result-card-icon icon-blue">
+              <i class="fas fa-cloud-rain"></i>
+            </div>
+            <div class="result-card-body">
+              <h4 class="result-card-label">Annual Harvesting Potential</h4>
+              <div class="result-card-value">
+                <span class="counter" id="counter-harvest" data-target="0">0</span>
+                <span class="result-unit">L/year</span>
+              </div>
+              <div class="result-progress">
+                <div class="result-progress-fill" id="progress-harvest"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-animate="fade-up" data-delay="150">
+          <div class="result-card glass-card">
+            <div class="result-card-icon icon-teal">
+              <i class="fas fa-database"></i>
+            </div>
+            <div class="result-card-body">
+              <h4 class="result-card-label">Recommended Tank Capacity</h4>
+              <div class="result-card-value">
+                <span class="counter" id="counter-tank" data-target="0">0</span>
+                <span class="result-unit">L</span>
+              </div>
+              <div class="result-progress">
+                <div class="result-progress-fill" id="progress-tank" style="background: var(--teal-gradient)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-animate="fade-up" data-delay="200">
+          <div class="result-card glass-card">
+            <div class="result-card-icon icon-green">
+              <i class="fas fa-layer-group"></i>
+            </div>
+            <div class="result-card-body">
+              <h4 class="result-card-label">Recommended Recharge Pit</h4>
+              <div class="result-card-value">
+                <span class="counter" id="counter-pit" data-target="0">0</span>
+                <span class="result-unit">m³</span>
+              </div>
+              <div class="result-progress">
+                <div class="result-progress-fill" id="progress-pit" style="background: var(--green-gradient)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-animate="fade-up" data-delay="250">
+          <div class="result-card glass-card">
+            <div class="result-card-icon icon-purple">
+              <i class="fas fa-arrow-down"></i>
+            </div>
+            <div class="result-card-body">
+              <h4 class="result-card-label">Artificial Recharge Potential</h4>
+              <div class="result-card-value">
+                <span class="counter" id="counter-recharge" data-target="0">0</span>
+                <span class="result-unit">L/year</span>
+              </div>
+              <div class="result-progress">
+                <div class="result-progress-fill" id="progress-recharge" style="background: var(--purple-gradient)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-animate="fade-up" data-delay="300">
+          <div class="result-card glass-card">
+            <div class="result-card-icon icon-orange">
+              <i class="fas fa-piggy-bank"></i>
+            </div>
+            <div class="result-card-body">
+              <h4 class="result-card-label">Estimated Water Savings</h4>
+              <div class="result-card-value">
+                ₹<span class="counter" id="counter-savings" data-target="0">0</span>
+                <span class="result-unit">/year</span>
+              </div>
+              <div class="result-progress">
+                <div class="result-progress-fill" id="progress-savings" style="background: var(--orange-gradient)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-animate="fade-up" data-delay="350">
+          <div class="result-card glass-card">
+            <div class="result-card-icon icon-cyan">
+              <i class="fas fa-percentage"></i>
+            </div>
+            <div class="result-card-body">
+              <h4 class="result-card-label">Demand Coverage</h4>
+              <div class="result-card-value">
+                <span class="counter" id="counter-coverage" data-target="0">0</span>
+                <span class="result-unit">%</span>
+              </div>
+              <div class="result-progress">
+                <div class="result-progress-fill" id="progress-coverage" style="background: var(--cyan-gradient)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       CHARTS SECTION
+  ============================ -->
+  <section id="charts" class="section charts-section" aria-labelledby="charts-title">
+    <div class="container">
+      <div class="section-header text-center" data-animate="fade-up">
+        <span class="section-badge">
+          <i class="fas fa-chart-bar me-2"></i>Data Analytics
+        </span>
+        <h2 id="charts-title" class="section-title">Visual Analytics Dashboard</h2>
+        <p class="section-subtitle">Interactive charts for comprehensive water resource analysis.</p>
+      </div>
+
+      <div class="row g-4 mt-2">
+        <!-- Chart 1: Monthly Rainfall -->
+        <div class="col-lg-8" data-animate="fade-up" data-delay="100">
+          <div class="chart-card glass-card">
+            <div class="chart-card-header">
+              <h3 class="chart-title"><i class="fas fa-cloud-rain me-2"></i>Monthly Rainfall Distribution</h3>
+              <div class="chart-legend-wrap" id="legend-rainfall"></div>
+            </div>
+            <div class="chart-body">
+              <canvas id="chart-rainfall" aria-label="Monthly rainfall chart" role="img"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart 2: Harvesting Potential -->
+        <div class="col-lg-4" data-animate="fade-up" data-delay="150">
+          <div class="chart-card glass-card">
+            <div class="chart-card-header">
+              <h3 class="chart-title"><i class="fas fa-tint me-2"></i>Harvesting Potential</h3>
+            </div>
+            <div class="chart-body">
+              <canvas id="chart-potential" aria-label="Harvesting potential doughnut chart" role="img"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart 3: Monthly Collection -->
+        <div class="col-lg-6" data-animate="fade-up" data-delay="200">
+          <div class="chart-card glass-card">
+            <div class="chart-card-header">
+              <h3 class="chart-title"><i class="fas fa-water me-2"></i>Monthly Water Collection (L)</h3>
+            </div>
+            <div class="chart-body">
+              <canvas id="chart-collection" aria-label="Monthly water collection bar chart" role="img"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart 4: Usage vs Harvest -->
+        <div class="col-lg-6" data-animate="fade-up" data-delay="250">
+          <div class="chart-card glass-card">
+            <div class="chart-card-header">
+              <h3 class="chart-title"><i class="fas fa-balance-scale me-2"></i>Water Usage vs Harvesting</h3>
+            </div>
+            <div class="chart-body">
+              <canvas id="chart-usage" aria-label="Usage vs harvesting line chart" role="img"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart 5: Tank Capacity -->
+        <div class="col-lg-12" data-animate="fade-up" data-delay="300">
+          <div class="chart-card glass-card">
+            <div class="chart-card-header">
+              <h3 class="chart-title"><i class="fas fa-database me-2"></i>Tank Capacity Comparison by Building Type</h3>
+            </div>
+            <div class="chart-body chart-body-wide">
+              <canvas id="chart-tank" aria-label="Tank capacity comparison horizontal bar chart" role="img"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       RECOMMENDATIONS SECTION
+  ============================ -->
+  <section id="recommendations" class="section recommendations-section" aria-labelledby="rec-title">
+    <div class="container">
+      <div class="section-header text-center" data-animate="fade-up">
+        <span class="section-badge">
+          <i class="fas fa-lightbulb me-2"></i>Expert Guidance
+        </span>
+        <h2 id="rec-title" class="section-title">System Recommendations</h2>
+        <p class="section-subtitle">Tailored recommendations based on standard engineering guidelines.</p>
+      </div>
+
+      <div class="row g-4 mt-2" id="recommendations-grid">
+        <!-- Populated by JS or static defaults below -->
+        <div class="col-lg-4 col-md-6" data-animate="fade-up" data-delay="100">
+          <div class="rec-card glass-card h-100">
+            <div class="rec-icon-wrap icon-blue">
+              <i class="fas fa-database rec-icon"></i>
+            </div>
+            <h3 class="rec-title">Recommended Tank Size</h3>
+            <p class="rec-desc">Install a storage tank of capacity equal to 20–25 days of water demand. Use food-grade RCC or HDPE tanks with inlet filters and overflow pipes.</p>
+            <div class="rec-detail" id="rec-tank-detail">
+              <i class="fas fa-info-circle me-1"></i>Run assessment for personalized sizing.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-animate="fade-up" data-delay="150">
+          <div class="rec-card glass-card h-100">
+            <div class="rec-icon-wrap icon-green">
+              <i class="fas fa-layer-group rec-icon"></i>
+            </div>
+            <h3 class="rec-title">Recharge Pit Dimensions</h3>
+            <p class="rec-desc">Construct recharge pits of 1m × 1m × 2m filled with gravel, broken bricks, and sand layers. Install at least one pit per 50m² of roof area.</p>
+            <div class="rec-detail" id="rec-pit-detail">
+              <i class="fas fa-info-circle me-1"></i>Run assessment for personalized sizing.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-animate="fade-up" data-delay="200">
+          <div class="rec-card glass-card h-100">
+            <div class="rec-icon-wrap icon-teal">
+              <i class="fas fa-arrow-down rec-icon"></i>
+            </div>
+            <h3 class="rec-title">Recharge Well Suggestion</h3>
+            <p class="rec-desc">Where groundwater level is below 10m, use a recharge well of 150–300mm diameter bored 3–5m into the aquifer zone with a pre-filter chamber.</p>
+            <div class="rec-detail">
+              <i class="fas fa-info-circle me-1"></i>Consult a hydrogeologist for deep aquifer systems.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-animate="fade-up" data-delay="250">
+          <div class="rec-card glass-card h-100">
+            <div class="rec-icon-wrap icon-orange">
+              <i class="fas fa-wrench rec-icon"></i>
+            </div>
+            <h3 class="rec-title">Maintenance Schedule</h3>
+            <p class="rec-desc">Clean first-flush diverters before monsoon season. Inspect and desilt recharge pits annually. Clean storage tanks every 6 months with disinfectant solution.</p>
+            <ul class="rec-checklist">
+              <li><i class="fas fa-calendar-check"></i> Pre-monsoon: Clean gutters &amp; filters</li>
+              <li><i class="fas fa-calendar-check"></i> Post-monsoon: Desilting</li>
+              <li><i class="fas fa-calendar-check"></i> Biannual: Tank cleaning</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-animate="fade-up" data-delay="300">
+          <div class="rec-card glass-card h-100">
+            <div class="rec-icon-wrap icon-purple">
+              <i class="fas fa-rupee-sign rec-icon"></i>
+            </div>
+            <h3 class="rec-title">Cost Estimate</h3>
+            <p class="rec-desc">Typical installation costs for a standard 5,000L RWH system with one recharge pit ranges from ₹35,000–₹80,000 depending on site conditions.</p>
+            <div class="cost-table">
+              <div class="cost-row"><span>Storage Tank (5000L)</span><span>₹15,000–25,000</span></div>
+              <div class="cost-row"><span>Recharge Pit (1 unit)</span><span>₹8,000–15,000</span></div>
+              <div class="cost-row"><span>Plumbing &amp; Filter</span><span>₹12,000–40,000</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-animate="fade-up" data-delay="350">
+          <div class="rec-card glass-card h-100">
+            <div class="rec-icon-wrap icon-cyan">
+              <i class="fas fa-seedling rec-icon"></i>
+            </div>
+            <h3 class="rec-title">Water Saving Tips</h3>
+            <p class="rec-desc">Complement your RWH system with these water-saving practices to maximize sustainability.</p>
+            <ul class="rec-checklist">
+              <li><i class="fas fa-leaf"></i> Fix leaks immediately (save 20L/day)</li>
+              <li><i class="fas fa-leaf"></i> Use drip irrigation for gardens</li>
+              <li><i class="fas fa-leaf"></i> Install dual-flush toilets</li>
+              <li><i class="fas fa-leaf"></i> Use aerated taps &amp; showerheads</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       ASSESSMENT REPORT SECTION
+  ============================ -->
+  <section id="report" class="section report-section d-none" aria-labelledby="report-title">
+    <div class="container">
+      <div class="section-header text-center" data-animate="fade-up">
+        <span class="section-badge">
+          <i class="fas fa-file-alt me-2"></i>Official Report
+        </span>
+        <h2 id="report-title" class="section-title">Assessment Report</h2>
+        <p class="section-subtitle">A comprehensive summary of your rooftop rainwater harvesting assessment.</p>
+        <div class="report-actions mt-3">
+          <button class="btn btn-report-print" id="print-report" aria-label="Print report">
+            <i class="fas fa-print me-2"></i>Print Report
+          </button>
+          <button class="btn btn-report-download" id="download-pdf" aria-label="Download PDF">
+            <i class="fas fa-file-pdf me-2"></i>Download PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable Report -->
+      <div class="report-document glass-card" id="report-document">
+        <!-- Report Header -->
+        <div class="report-header">
+          <div class="report-logo">
+            <i class="fas fa-tint report-logo-icon"></i>
+            <div>
+              <h1 class="report-org">RTRWH &amp; AR Assessment Platform</h1>
+              <p class="report-sub">Rooftop Rainwater Harvesting &amp; Artificial Recharge Assessment</p>
+            </div>
+          </div>
+          <div class="report-meta">
+            <div class="report-meta-item"><strong>Report ID:</strong> <span id="report-id">—</span></div>
+            <div class="report-meta-item"><strong>Date:</strong> <span id="report-date">—</span></div>
+            <div class="report-meta-item"><strong>Status:</strong> <span class="badge-report-status">Completed</span></div>
+          </div>
+        </div>
+
+        <div class="report-divider"></div>
+
+        <!-- Section 1: User & Building Details -->
+        <div class="report-section">
+          <h2 class="report-section-title"><i class="fas fa-user me-2"></i>1. Property &amp; Owner Details</h2>
+          <div class="report-grid">
+            <div class="report-field"><span class="rf-label">Owner Name</span><span class="rf-value" id="rpt-owner">—</span></div>
+            <div class="report-field"><span class="rf-label">Building Type</span><span class="rf-value" id="rpt-btype">—</span></div>
+            <div class="report-field"><span class="rf-label">Location</span><span class="rf-value" id="rpt-location">—</span></div>
+            <div class="report-field"><span class="rf-label">Coordinates</span><span class="rf-value" id="rpt-coords">—</span></div>
+          </div>
+        </div>
+
+        <!-- Section 2: Rooftop Details -->
+        <div class="report-section">
+          <h2 class="report-section-title"><i class="fas fa-home me-2"></i>2. Rooftop Characteristics</h2>
+          <div class="report-grid">
+            <div class="report-field"><span class="rf-label">Rooftop Area</span><span class="rf-value" id="rpt-area">—</span></div>
+            <div class="report-field"><span class="rf-label">Roof Material</span><span class="rf-value" id="rpt-material">—</span></div>
+            <div class="report-field"><span class="rf-label">Roof Slope</span><span class="rf-value" id="rpt-slope">—</span></div>
+            <div class="report-field"><span class="rf-label">Roof Condition</span><span class="rf-value" id="rpt-condition">—</span></div>
+            <div class="report-field"><span class="rf-label">Runoff Coefficient</span><span class="rf-value" id="rpt-coeff">—</span></div>
+          </div>
+        </div>
+
+        <!-- Section 3: Rainfall Data -->
+        <div class="report-section">
+          <h2 class="report-section-title"><i class="fas fa-cloud-rain me-2"></i>3. Rainfall &amp; Soil Data</h2>
+          <div class="report-grid">
+            <div class="report-field"><span class="rf-label">Annual Rainfall</span><span class="rf-value" id="rpt-rainfall">—</span></div>
+            <div class="report-field"><span class="rf-label">Soil Type</span><span class="rf-value" id="rpt-soil">—</span></div>
+            <div class="report-field"><span class="rf-label">Groundwater Level</span><span class="rf-value" id="rpt-gw">—</span></div>
+            <div class="report-field"><span class="rf-label">Recharge Feasibility</span><span class="rf-value" id="rpt-feasibility">—</span></div>
+          </div>
+        </div>
+
+        <!-- Section 4: Water Usage -->
+        <div class="report-section">
+          <h2 class="report-section-title"><i class="fas fa-faucet me-2"></i>4. Water Usage Data</h2>
+          <div class="report-grid">
+            <div class="report-field"><span class="rf-label">Occupants</span><span class="rf-value" id="rpt-occupants">—</span></div>
+            <div class="report-field"><span class="rf-label">Daily Consumption</span><span class="rf-value" id="rpt-daily">—</span></div>
+            <div class="report-field"><span class="rf-label">Annual Demand</span><span class="rf-value" id="rpt-annual-demand">—</span></div>
+            <div class="report-field"><span class="rf-label">Existing Source</span><span class="rf-value" id="rpt-source">—</span></div>
+          </div>
+        </div>
+
+        <!-- Section 5: Calculated Values -->
+        <div class="report-section">
+          <h2 class="report-section-title"><i class="fas fa-calculator me-2"></i>5. Assessment Results</h2>
+          <div class="report-results-table">
+            <table class="table table-bordered" aria-label="Assessment results table">
+              <thead>
+                <tr>
+                  <th scope="col">Parameter</th>
+                  <th scope="col">Calculated Value</th>
+                  <th scope="col">Unit</th>
+                  <th scope="col">Remarks</th>
+                </tr>
+              </thead>
+              <tbody id="results-table-body">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Section 6: Summary -->
+        <div class="report-section">
+          <h2 class="report-section-title"><i class="fas fa-star me-2"></i>6. Assessment Summary</h2>
+          <div class="report-summary-box" id="report-summary-box">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <div class="report-footer">
+          <p>This report is generated by the RTRWH &amp; AR Assessment Platform based on standard IS codes, CGWB guidelines, and CPHEEO manuals.</p>
+          <p><strong>Disclaimer:</strong> This is an indicative assessment. Detailed site investigation is recommended before implementation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       FAQ SECTION
+  ============================ -->
+  <section id="faq" class="section faq-section" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-4" data-animate="fade-right">
+          <span class="section-badge">
+            <i class="fas fa-question-circle me-2"></i>Common Questions
+          </span>
+          <h2 id="faq-title" class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">
+            Everything you need to know about rainwater harvesting and artificial groundwater recharge.
+          </p>
+          <div class="faq-illustration" aria-hidden="true">
+            <i class="fas fa-tint faq-drop faq-drop-1"></i>
+            <i class="fas fa-tint faq-drop faq-drop-2"></i>
+            <i class="fas fa-tint faq-drop faq-drop-3"></i>
+          </div>
+        </div>
+        <div class="col-lg-8" data-animate="fade-left">
+          <div class="accordion faq-accordion" id="faqAccordion">
+
+            <div class="accordion-item faq-item">
+              <h3 class="accordion-header" id="faq-h1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq-c1" aria-expanded="true" aria-controls="faq-c1">
+                  What is Rooftop Rainwater Harvesting (RTRWH)?
+                </button>
+              </h3>
+              <div id="faq-c1" class="accordion-collapse collapse show" aria-labelledby="faq-h1" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Rooftop Rainwater Harvesting is a system that captures rain falling on rooftops through a network of gutters, downpipes, filters, and storage tanks. The collected water can be used directly for non-potable uses (gardening, flushing, washing) or treated for drinking. It reduces runoff, recharges groundwater, and provides an alternative water source.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item faq-item">
+              <h3 class="accordion-header" id="faq-h2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq-c2" aria-expanded="false" aria-controls="faq-c2">
+                  How is the rainwater harvesting potential calculated?
+                </button>
+              </h3>
+              <div id="faq-c2" class="accordion-collapse collapse" aria-labelledby="faq-h2" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  The annual harvesting potential is calculated using the formula:<br>
+                  <strong>V = R × A × C × η</strong><br>
+                  Where V = Volume (L), R = Annual Rainfall (mm), A = Rooftop Area (m²), C = Runoff Coefficient (0.6–0.9 based on material), η = System efficiency (0.85). A 1mm rainfall on 1m² = 1 litre.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item faq-item">
+              <h3 class="accordion-header" id="faq-h3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq-c3" aria-expanded="false" aria-controls="faq-c3">
+                  What is Artificial Recharge and how does it help?
+                </button>
+              </h3>
+              <div id="faq-c3" class="accordion-collapse collapse" aria-labelledby="faq-h3" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Artificial Recharge (AR) is the intentional process of augmenting natural groundwater recharge by directing harvested or treated water into aquifers through engineered structures. It combats over-extraction, raises water table levels, improves water quality through natural filtration, and can prevent land subsidence in urban areas.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item faq-item">
+              <h3 class="accordion-header" id="faq-h4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq-c4" aria-expanded="false" aria-controls="faq-c4">
+                  How do I determine the right tank size for my building?
+                </button>
+              </h3>
+              <div id="faq-c4" class="accordion-collapse collapse" aria-labelledby="faq-h4" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Tank size should meet 20–25 days of water demand. Formula: Tank Capacity = Daily Demand × 20 to 25. For a household of 5 people using 150 L/day each, the total daily demand is 750 L. Recommended tank size = 750 × 20 = 15,000 L. However, this is adjusted based on rainfall patterns, monsoon duration, and available space.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item faq-item">
+              <h3 class="accordion-header" id="faq-h5">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq-c5" aria-expanded="false" aria-controls="faq-c5">
+                  Is rainwater safe to drink?
+                </button>
+              </h3>
+              <div id="faq-c5" class="accordion-collapse collapse" aria-labelledby="faq-h5" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Collected rainwater may contain dust, bird droppings, biological contaminants, and dissolved pollutants. It is NOT recommended for direct drinking without treatment. Standard treatment includes: first-flush diversion (discarding first 1mm of rainfall), multi-stage filtration, UV treatment, and chlorination. Properly treated water can meet IS 10500 potable water standards.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item faq-item">
+              <h3 class="accordion-header" id="faq-h6">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq-c6" aria-expanded="false" aria-controls="faq-c6">
+                  What government schemes support rainwater harvesting?
+                </button>
+              </h3>
+              <div id="faq-c6" class="accordion-collapse collapse" aria-labelledby="faq-h6" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Several national and state government schemes support RWH including: Jal Shakti Abhiyan (National Water Mission), Atal Bhujal Yojana (CGWB), AMRUT 2.0, Tamil Nadu's mandatory RWH requirement, and subsidies provided by various State Ground Water Authorities. Tax rebates may also be available under green building certification programs (GRIHA, LEED).
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       CONTACT SECTION
+  ============================ -->
+  <section id="contact" class="section contact-section" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="section-header text-center" data-animate="fade-up">
+        <span class="section-badge">
+          <i class="fas fa-envelope me-2"></i>Get in Touch
+        </span>
+        <h2 id="contact-title" class="section-title">Contact Us</h2>
+        <p class="section-subtitle">Have questions about our platform or need expert consultation? Reach out to us.</p>
+      </div>
+
+      <div class="row g-4 mt-2">
+        <!-- Contact Info -->
+        <div class="col-lg-4" data-animate="fade-right">
+          <div class="contact-info-wrap">
+            <div class="contact-info-card glass-card">
+              <div class="contact-icon-wrap">
+                <i class="fas fa-map-marker-alt contact-icon"></i>
+              </div>
+              <div>
+                <h4 class="contact-info-title">Address</h4>
+                <p class="contact-info-text">Water Resources Department,<br>
+                  Ministry of Jal Shakti,<br>
+                  New Delhi – 110001, India</p>
+              </div>
+            </div>
+
+            <div class="contact-info-card glass-card">
+              <div class="contact-icon-wrap">
+                <i class="fas fa-envelope contact-icon"></i>
+              </div>
+              <div>
+                <h4 class="contact-info-title">Email</h4>
+                <a href="mailto:info@rtrwh-assessment.gov.in" class="contact-info-link">
+                  info@rtrwh-assessment.gov.in
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-info-card glass-card">
+              <div class="contact-icon-wrap">
+                <i class="fas fa-phone contact-icon"></i>
+              </div>
+              <div>
+                <h4 class="contact-info-title">Phone</h4>
+                <a href="tel:+911123383756" class="contact-info-link">+91-11-2338-3756</a>
+              </div>
+            </div>
+
+            <!-- Map Placeholder -->
+            <div class="map-placeholder glass-card">
+              <i class="fas fa-map map-icon"></i>
+              <p>Interactive map would be embedded here via Google Maps API</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col-lg-8" data-animate="fade-left">
+          <div class="contact-form-card glass-card">
+            <h3 class="contact-form-title">Send a Message</h3>
+            <form id="contact-form" novalidate aria-label="Contact form">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="contact-name" class="form-label">Full Name <span class="required">*</span></label>
+                  <div class="input-group-custom">
+                    <i class="fas fa-user input-icon"></i>
+                    <input type="text" class="form-control custom-input" id="contact-name"
+                      name="contactName" placeholder="Your full name" required />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="contact-email" class="form-label">Email Address <span class="required">*</span></label>
+                  <div class="input-group-custom">
+                    <i class="fas fa-envelope input-icon"></i>
+                    <input type="email" class="form-control custom-input" id="contact-email"
+                      name="contactEmail" placeholder="your@email.com" required />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="contact-phone" class="form-label">Phone Number</label>
+                  <div class="input-group-custom">
+                    <i class="fas fa-phone input-icon"></i>
+                    <input type="tel" class="form-control custom-input" id="contact-phone"
+                      name="contactPhone" placeholder="+91 98765 43210" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="contact-subject" class="form-label">Subject <span class="required">*</span></label>
+                  <div class="input-group-custom">
+                    <i class="fas fa-tag input-icon"></i>
+                    <select class="form-control custom-input custom-select" id="contact-subject" name="contactSubject" required>
+                      <option value="">Select subject</option>
+                      <option value="assessment">Assessment Query</option>
+                      <option value="technical">Technical Support</option>
+                      <option value="policy">Policy Information</option>
+                      <option value="partnership">Partnership</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label for="contact-message" class="form-label">Message <span class="required">*</span></label>
+                  <div class="input-group-custom textarea-wrap">
+                    <i class="fas fa-comment input-icon input-icon-top"></i>
+                    <textarea class="form-control custom-input custom-textarea" id="contact-message"
+                      name="contactMessage" rows="5" placeholder="Describe your query in detail..." required></textarea>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-contact-submit" id="contact-submit" aria-label="Send message">
+                    <span class="btn-text"><i class="fas fa-paper-plane me-2"></i>Send Message</span>
+                    <span class="btn-loading d-none"><i class="fas fa-circle-notch fa-spin me-2"></i>Sending...</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       FOOTER
+  ============================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Brand -->
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-brand">
+              <div class="brand-logo">
+                <i class="fas fa-tint brand-icon"></i>
+                <span class="brand-text">RTRWH<span class="brand-accent">AR</span></span>
+              </div>
+              <p class="footer-brand-desc">
+                A professional platform for comprehensive Rooftop Rainwater Harvesting and Artificial Recharge assessment, supporting sustainable water management across India.
+              </p>
+              <div class="social-links" aria-label="Social media links">
+                <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-lg-2 col-md-6">
+            <h4 class="footer-heading">Quick Links</h4>
+            <ul class="footer-links" role="list">
+              <li><a href="#about">About</a></li>
+              <li><a href="#assessment">Assessment</a></li>
+              <li><a href="#results">Results</a></li>
+              <li><a href="#charts">Analytics</a></li>
+              <li><a href="#recommendations">Recommendations</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div class="col-lg-3 col-md-6">
+            <h4 class="footer-heading">Resources</h4>
+            <ul class="footer-links" role="list">
+              <li><a href="#">CGWB Guidelines</a></li>
+              <li><a href="#">IS Code 15797</a></li>
+              <li><a href="#">CPHEEO Manual</a></li>
+              <li><a href="#">Jal Shakti Abhiyan</a></li>
+              <li><a href="#">State RWH Policies</a></li>
+              <li><a href="#">Research Papers</a></li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="col-lg-3 col-md-6">
+            <h4 class="footer-heading">Stay Updated</h4>
+            <p class="footer-newsletter-desc">Get the latest updates on water conservation policies and guidelines.</p>
+            <form class="footer-newsletter" id="newsletter-form" aria-label="Newsletter subscription">
+              <label for="newsletter-email" class="visually-hidden">Email address for newsletter</label>
+              <div class="newsletter-input-wrap">
+                <input type="email" class="newsletter-input" id="newsletter-email"
+                  placeholder="your@email.com" required aria-label="Email for newsletter" />
+                <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </form>
+            <div class="govt-badges mt-3">
+              <span class="govt-badge"><i class="fas fa-shield-alt me-1"></i>Govt. Certified</span>
+              <span class="govt-badge"><i class="fas fa-leaf me-1"></i>Eco-Friendly</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-inner">
+          <p class="footer-copyright">
+            &copy; 2024 RTRWH &amp; AR Assessment Platform. All rights reserved.
+          </p>
+          <div class="footer-legal-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms &amp; Conditions</a>
+            <a href="#">Disclaimer</a>
+            <a href="#">Sitemap</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+</html>
